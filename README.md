@@ -25,6 +25,12 @@ The (JSON Schema) technical specification for the EU DCC can be found [here](htt
 
 Relevant documents and links can be found [here](./documentation/documents-links.md).
 
+## jitpack (maven repo)
+[![](https://jitpack.io/v/section42/dgc-business-rules.svg)](https://jitpack.io/#section42/dgc-business-rules)
+
+- implementation 'com.github.section42:dgc-business-rules:{{release-tag}}'
+
+
 
 ## Assumptions
 
