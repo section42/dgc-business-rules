@@ -9,6 +9,8 @@ internal fun isFalsy(value: JsonNode): Boolean = when (value) {
     is NullNode -> true
     is TextNode -> value.textValue().isEmpty()
     is IntNode -> value.intValue() == 0
+    is ArrayNode -> value.size() == 0
+    is ObjectNode -> value.size() == 0
     else -> false
 }
 
@@ -17,7 +19,7 @@ internal fun isTruthy(value: JsonNode): Boolean = when (value) {
     is TextNode -> value.textValue().isNotEmpty()
     is IntNode -> value.intValue() != 0
     is ArrayNode -> value.size() > 0
-    is ObjectNode -> true
+    is ObjectNode -> value.size() > 0
     else -> false
 }
 
@@ -152,7 +154,7 @@ internal fun evaluateNot(operandExpr: JsonNode, data: JsonNode): JsonNode {
 private fun isTimeUnit(unit: JsonNode): Boolean {
     if (unit !is TextNode) return false
     return try {
-        val timeUnit = TimeUnit.valueOf(unit.textValue())
+        TimeUnit.valueOf(unit.textValue())
         true
     } catch (iae: IllegalArgumentException) {
         false

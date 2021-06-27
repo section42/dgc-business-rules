@@ -1,5 +1,5 @@
 <h1 align="center">
- Digital Green Certificates: Business Rules
+ Digital COVID Certificates: Business Rules
 </h1>
 
 <p align="center">
@@ -39,6 +39,7 @@ Relevant documents and links can be found [here](./documentation/documents-links
 Various code in this repo assumes that the following two repos are cloned right next to where this repo's cloned:
 
 * [ehn-dcc-schema](https://github.com/ehn-dcc-development/ehn-dcc-schema)
+* [ehn-dcc-valuesets](https://github.com/ehn-dcc-development/ehn-dcc-valuesets)
 * ([dgc-testdata](https://github.com/ehn-dcc-development/dgc-testdata))
 
 
