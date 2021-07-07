@@ -4,18 +4,18 @@
 It is a [specified](https://github.com/ehn-dcc-development/dgc-business-rules/blob/main/certlogic/specification/README.md) subset of [JsonLogic](https://jsonlogic.com/), extended with necessary custom operations - e.g. for working with dates.
 It's part of the efforts surrounding the [Digital COVID Certificate](https://ec.europa.eu/info/live-work-travel-eu/coronavirus-response/safe-covid-19-vaccines-europeans/eu-digital-covid-certificate_en), and as such serves as the basis for defining _interchangeable_ validation rules on top of the DCC.
 
-This NPM package consists of an implementation of CertLogic in JavaScript(/TypeScript), compatible with version **1.0.1** of the CertLogic specification.
+This NPM package consists of a validator for CertLogic, implemented in JavaScript(/TypeScript).
 
 
 ## API
 
 This NPM package exposes the following top-level things:
 
-* `CertLogicExpression`, `TimeUnit`: TypeScript types to capture CertLogic expressions, and units of time (currently only **hour** and **day**), respectively
-* `evaluate`: a function that takes a CertLogic expression, and a data context, and evaluates that expression with the given data context.
-  Note that the function will throw an `Error` if it encounters any problem, rather than returning some default value.
-* `version`: a constant containing the current version (taken from the [`package.json`](./package.json))
-* `isInt`: a function to determine whether a given value represents an integer
+* `ValidationError`: a TypeScript type for reporting validation errors on (sub) expressions.
+* `validateFormat`: a function that validates CertLogic expressions purely based on the CertLogic format, without regarding types.
+* `validate`: a function that validates CertLogic expressions, and returns any violations as validation errors.
+    Currently, this is effectively an alias for `validateFormat`, but that might change in the future.
+* `dataAccesses`: a function that computes all data accesses that may be performed by the given CertLogic expression.
 
 Note that documentation is...sparse outside of the [overall documentation for CertLogic](https://github.com/ehn-dcc-development/dgc-business-rules/tree/main/documentation).
 In particular, code-level documentation is largely absent.
@@ -26,13 +26,13 @@ On the other hand: the [TypeScript source code](./src) is likely easy enough to 
 
 This NPM package exposes a CLI command, which can be used as follows:
 
-    $ npx certlogic-run <path of JSON file containing CertLogic expression> <path of JSON file containing the data context>
+    $ npx certlogic-validate <path of JSON file containing CertLogic expression>
 
 or as
 
-    $ ./node_modules/.bin/certlogic-run <path of JSON file containing CertLogic expression> <path of JSON file containing the data context>
+    $ ./node_modules/.bin/certlogic-validate <path of JSON file containing CertLogic expression>
 
-inside any NPM package that has `certlogic-js` installed as dependency.
+inside any NPM package that has `certlogic-validation` installed as dependency.
 
 
 ## Testing

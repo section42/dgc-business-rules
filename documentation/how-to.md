@@ -24,7 +24,7 @@ The data structure a rule operates on can be rendered in JSON format as follows:
 
 The DCC payload JSON _must_ conform to the [DCC JSON Schema](https://github.com/ehn-dcc-development/ehn-dcc-schema/blob/main/DCC.combined-schema.json) (currently at version/release **1.3.0**), as well as to the [technical specification](https://ec.europa.eu/health/sites/default/files/ehealth/docs/covid-certificate_json_specification_en.pdf) for it.
 
-The “compressed” value sets are derived from the [value sets in the DCC Schema repo](https://github.com/ehn-dcc-development/ehn-dcc-schema/tree/main/valuesets).
+The “compressed” value sets are derived from the [eHN value sets repo](https://github.com/ehn-dcc-development/ehn-dcc-valuesets).
 The (extra) external parameters may consist of data like the validation clock.
 
 Apart from its logic -a CertLogic expression- a rule comes with metadata:
@@ -46,7 +46,7 @@ The full fit-for-travel determination must therefore take the form of a *set of 
 
 The logical expression of a rule is written in a JSON format called **CertLogic**.
 CertLogic is a subset of the [JsonLogic](https://jsonlogic.com/) format, a relatively well-known format/framework for expressing business logic on structured data, restricted to and expanded with what's needed for DCC-rules.
-For more information about CertLogic: read its [specification](../certlogic/specification.md).
+For more information about CertLogic: read its [specification](../certlogic/specification/README.md).
 (For more information on the reasoning behind this setup: see the [design choices document](./design-choices.md).)
 
 Although CertLogic is a fairly easy format, some help with authoring rule expressions is desirable.

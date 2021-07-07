@@ -3,7 +3,7 @@ import { join } from "path"
 
 const deepEqual = require("deep-equal")
 
-import { validateFormat } from "../../certlogic-validation"
+import { validateFormat } from "certlogic-validation"
 const { evaluate } = require("certlogic-js")
 
 import { Assertion, TestCase, TestSuite } from "certlogic-js/src/test/test-types"
@@ -94,7 +94,7 @@ console.log(`${nNoMatch} of ${nAssertions} assertions fail (no-match)`)
 console.log(`${nFail} of ${nAssertions} assertions fail due to errors during evaluation`)
 
 
-writeFileSync(join(__dirname, "../../testSuite/JsonLogic-testSuite.json"), JSON.stringify(testSuite, null, 2), "utf8")
+writeFileSync(join(__dirname, "../../specification/testSuite/JsonLogic-testSuite.json"), JSON.stringify(testSuite, null, 2), "utf8")
 
 console.log(`wrote ${nMatch} assertions to a test suite`)
 
